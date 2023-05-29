@@ -2,13 +2,13 @@ import requests
 import json
 import datetime
 import time
-from bs4 import BeautifulSoup
-from zhdate import ZhDate
+#from bs4 import BeautifulSoup
+#from zhdate import ZhDate
  
 class SendMessage():                                                 #定义发送消息的类
     def __init__(self):                                          
         date = self.get_date()                                       #获取当前日期
-        weather = self.get_weather()                                 #获取天气信息
+  #      weather = self.get_weather()                                 #获取天气信息
         lovedate = self.get_loveday()                                #获取纪念日
         herbirthday = self.get_herbirthday()                         #获取npy生日
         mybirthday = self.get_mybirthday()                           #获取自己生日
@@ -28,55 +28,7 @@ class SendMessage():                                                 #定义发�
  
  
  
-    def get_weather(self):
-        """
-        该方法中用到了beautifulsoup的一些基本用法
-        感兴趣可以深入了解python爬虫
-        """
-        url = 'http://www.weather.com.cn/weather/101290101.shtml'     #昆明天气网站
-        sysdate = datetime.date.today()
-        r = requests.get(url, timeout=30)                             # 用requests抓取网页信息
-        r.raise_for_status()                                          # 异常时停止
-        r.encoding = r.apparent_encoding                              # 编码格式
-        html = r.text
-        final_list = []
-        soup = BeautifulSoup(html, 'html.parser')                     # 用BeautifulSoup库解析网页 #soup里有对当前天气的建议
-        body = soup.body                                              # 从soup里截取body的一部分
-        data = body.find('div', {'id': '7d'})                         #在网页浏览器按F12遍历div 找到 id = 7d 的对应标签 会发现七天的天气信息都包括在子节点中
-        ul = data.find('ul')                                          #用find方法找ul标签
-        lis = ul.find_all('li')                                       #找到ul中的li标签也就是列表其中存放着 日期 天气 风力等信息 
- 
-        for day in lis:
-            temp_list = []
- 
-            date = day.find('h1').string                              # 找到日期
-            if date.string.split('日')[0] == str(sysdate.day):
-                temp_list = []
- 
-                date = day.find('h1').string                          # 找到日期
-                temp_list.append(date)
- 
-                info = day.find_all('p')                              # 找到所有的p标签
-                temp_list.append(info[0].string)
- 
-                if info[1].find('span') is None:                      # 找到p标签中的第二个值'span'标签——最高温度
-                    temperature_highest = ' '                         # 用一个判断是否有最高温度
-                else:
-                    temperature_highest = info[1].find('span').string
-                    temperature_highest = temperature_highest.replace('℃', ' ')
- 
-                if info[1].find('i') is None:                         # 找到p标签中的第二个值'i'标签——最高温度
-                    temperature_lowest = ' '                          # 用一个判断是否有最低温度
-                else:
-                    temperature_lowest = info[1].find('i').string
-                    temperature_lowest = temperature_lowest.replace('℃', ' ')
- 
-                temp_list.append(temperature_highest)                 # 将最高气温添加到temp_list中
-                temp_list.append(temperature_lowest)                  # 将最低气温添加到temp_list中
- 
-                final_list.append(temp_list)                          # 将temp_list列表添加到final_list列表中
-                return '天气情况:' + final_list[0][1] + '\n温度:' + final_list[0][3].strip() + '~' + \
-                               final_list[0][2].strip() + '℃'
+
     def get_date(self):
         """
         这些都是datetime库中的用法
@@ -96,7 +48,7 @@ class SendMessage():                                                 #定义发�
         """
         today = datetime.datetime.now()                               #获取现在时间信息
         data_str = today.strftime('%Y-%m-%d')
-        herbirthDay = ZhDate(today.year, 1, 18).to_datetime()          #将农历1.18号的时间转换为公历时间再转换为datetime类型的时间
+        herbirthDay = datetime.datetime(today.year,12,7)          #将农历1.18号的时间转换为公历时间再转换为datetime类型的时间
         if herbirthDay >today :                                        #如果ta的生日日期比今天靠后则直接计算这两天的序号之差
             difference = herbirthDay.toordinal() - today.toordinal()
             return ("\n距离熊又又生日,还有 %d 天。" % (difference))
@@ -179,11 +131,8 @@ class SendMessage():                                                 #定义发�
                                 "value": self.dataJson.get("body"),
                                 "color": "#EA0000"
                             },
-                            "weather": {
-                                "value": self.dataJson.get("weather"),
-                                "color": "#00EC00"
-                            },
-                             "date": {
+                   
+                            "date": {
                                 "value": self.dataJson.get("date"),
                                 "color": "#6F00D2"
                             },
