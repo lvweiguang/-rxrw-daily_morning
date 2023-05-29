@@ -20,7 +20,7 @@ class SendMessage():                                                 #定义发�
                         }
         self.appID = 'wx9f7ff34b6704c03a'                             #appid 注册时有
         self.appsecret = 'd24024b5b59620a0f7d14e3f1161d9a7'           #appsecret 同上
-        self.template_id = 'UrykEL3q2yuDan_oeDUb19SjaAvGS_UpiqI9-Qv3P0s'  # 模板id
+        self.template_id = 'xG9cCjgdKBg5cT2XgmCN1nsqzw1anu8LocKQpubbafc'  # 模板id
         self.access_token = self.get_access_token()                   #获取 access token
         self.opend_ids = self.get_openid()                            #获取关注用户的openid
  
