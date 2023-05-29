@@ -2,11 +2,11 @@ import requests
 import json
 import datetime
 import time
-from bs4 import BeautifulSoup
-from zhdate import ZhDate
+import BeautifulSoup
+import ZhDate
  
 class SendMessage():                                                 #定义发送消息的类
-    def __init__(self):                                              
+    def __init__(self):                    f                          
         date = self.get_date()                                       #获取当前日期
         weather = self.get_weather()                                 #获取天气信息
         lovedate = self.get_loveday()                                #获取纪念日
