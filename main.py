@@ -2,8 +2,8 @@ import requests
 import json
 import datetime
 import time
-import BeautifulSoup
-import ZhDate
+from bs4 import BeautifulSoup
+from zhdate import ZhDate
  
 class SendMessage():                                                 #定义发送消息的类
     def __init__(self):                                          
