@@ -19,7 +19,7 @@ class SendMessage():                                                 #定义发�
                         "last":'\n今天也是爱bb🐖的一天捏！！！'      
                         }
         self.appID = 'wx9f7ff34b6704c03a'                             #appid 注册时有
-        self.appsecret = '709db6067db578d616e5890a719c50f0'           #appsecret 同上
+        self.appsecret = 'd24024b5b59620a0f7d14e3f1161d9a7'           #appsecret 同上
         self.template_id = 'klxUXN2aviwEwpJJSFcQSF3RDcxBXYr8dgrOgSKk4Sc'  # 模板id
         self.access_token = self.get_access_token()                   #获取 access token
         self.opend_ids = self.get_openid()                            #获取关注用户的openid
