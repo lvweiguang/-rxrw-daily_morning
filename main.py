@@ -19,9 +19,9 @@ class SendMessage():                                                 #定义发�
                         "weather":weather+'\n城市：昆明'+'\n',        #因为还没写获取地理位置的所以城市暂时写死 后续将会改为获取当前位置并爬取对应城市的天气信息版本
                         "last":'\n今天也是爱bb🐖的一天捏！！！'      
                         }
-        self.appID = ''                             #appid 注册时有
-        self.appsecret = ''           #appsecret 同上
-        self.template_id = ''  # 模板id
+        self.appID = 'wx9f7ff34b6704c03a'                             #appid 注册时有
+        self.appsecret = '709db6067db578d616e5890a719c50f0'           #appsecret 同上
+        self.template_id = 'klxUXN2aviwEwpJJSFcQSF3RDcxBXYr8dgrOgSKk4Sc'  # 模板id
         self.access_token = self.get_access_token()                   #获取 access token
         self.opend_ids = self.get_openid()                            #获取关注用户的openid
  
