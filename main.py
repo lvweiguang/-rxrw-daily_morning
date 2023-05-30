@@ -12,15 +12,19 @@ class SendMessage():                                                 #定义发�
         lovedate = self.get_loveday()                                #获取纪念日
         herbirthday = self.get_herbirthday()                         #获取npy生日
         mybirthday = self.get_mybirthday()                           #获取自己生日
-        body =lovedate+"\n"+herbirthday+mybirthday                   
+        body =lovedate+"\n"+herbirthday+mybirthday
+        bir1 =herbirthday+"\n"
+        bir2 =mybirthday+"\n"
         self.dataJson ={"frist":"早上好bb！❤\n",                     #最终要发送的json
                         "date":date+'\n',
                         "body":body+'\n',        #因为还没写获取地理位置的所以城市暂时写死 后续将会改为获取当前位置并爬取对应城市的天气信息版本
+                        "bir1":bir1+'\n',
+                        "bir2":bir2+'\n',
                         "last":'\n今天也是爱bb🐖的一天捏！！！'      
                         }
         self.appID = 'wx9f7ff34b6704c03a'                             #appid 注册时有
         self.appsecret = 'd24024b5b59620a0f7d14e3f1161d9a7'           #appsecret 同上
-        self.template_id = 'Rn_TmTWUMorIMx1jQE6fSmZPTo_Oy-yV5Dydi9jUxdw'  # 模板id
+        self.template_id = 'd6lm5vTXjA9k-l1Tsf4MnkPY10i5uxi1xlSL4LQ0djE'  # 模板id
         self.access_token = self.get_access_token()                   #获取 access token
         self.opend_ids = self.get_openid()                            #获取关注用户的openid
  
@@ -34,7 +38,7 @@ class SendMessage():                                                 #定义发�
         若零基础可以去python的开发文档中查阅
         """
         sysdate = datetime.date.today()                 # 只获取日期
-        now_time = datetime.datetime.now()              # 获取日期加时间
+        now_time = datetime.datetime.utcnow()              # 获取日期加时间
         week_day = sysdate.isoweekday()                 # 获取周几
         week = ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期天']
         return '现在是' + str(now_time)[0:16] + ' ' + week[week_day - 1]
@@ -130,7 +134,14 @@ class SendMessage():                                                 #定义发�
                                 "value": self.dataJson.get("body"),
                                 "color": "#EA0000"
                             },
-                   
+                              "bir1": {
+                                "value": self.dataJson.get("bir1"),
+                                "color": "#EA0000"
+                            },
+                          "bir2": {
+                                "value": self.dataJson.get("bir2"),
+                                "color": "#EA0000"
+                            },
                             "date": {
                                 "value": self.dataJson.get("date"),
                                 "color": "#6F00D2"
