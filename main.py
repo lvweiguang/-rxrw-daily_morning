@@ -12,9 +12,9 @@ class SendMessage():                                                 #定义发�
         lovedate = self.get_loveday()                                #获取纪念日
         herbirthday = self.get_herbirthday()                         #获取npy生日
         mybirthday = self.get_mybirthday()                           #获取自己生日
-        body =lovedate+"\n"+herbirthday+mybirthday
-        bir1 =herbirthday+"\n"
-        bir2 =mybirthday+"\n"
+        body = lovedate+"\n"+herbirthday+mybirthday
+        bir1 = herbirthday+"\n"
+        bir2 = mybirthday+"\n"
         self.dataJson ={"frist":"早上好bb！❤\n",                     #最终要发送的json
                         "date":date+'\n',
                         "body":body+'\n',        #因为还没写获取地理位置的所以城市暂时写死 后续将会改为获取当前位置并爬取对应城市的天气信息版本
