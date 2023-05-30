@@ -42,7 +42,7 @@ class SendMessage():                                                 #定义发�
         week_day = sysdate.isoweekday()                 # 获取周几
         week = ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期天']
         #return '现在是' + str(now_time)[0:16] + ' ' + week[week_day - 1]
-        return '现在是' + now_time.strftime('%Y-%m-%d') + ' ' + week[week_day - 1]
+        return '现在是' + now_time.strftime('%Y-%m-%d %H:%M:%S') + ' ' + week[week_day - 1]
     def get_herbirthday(self):
         """
         获取npy生日 这里还用到了农历时间库
