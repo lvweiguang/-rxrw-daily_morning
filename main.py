@@ -3,6 +3,7 @@ import json
 import datetime
 import time
 import re
+import requests
  
 class SendMessage():                                                 #定义发送消息的类
     def __init__(self):                                          
