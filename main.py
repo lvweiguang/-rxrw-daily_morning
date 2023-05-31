@@ -41,7 +41,14 @@ class SendMessage():                                                 #定义发�
        	#1.获取网页源代码
             raw_text = res.text
             re_res = re.findall('<li.*?lv2.*?class="wea">(.*?)</p>.*?<span>(.*?)</span>.*?<i>(.*?)℃.*?<i>(.*?)</i>', raw_text)
-
+            for re_re in re_res:
+               mx={
+                '天气':re_re[1],
+                '最高温度':re_re[2],
+                '最低温度':re_re[3],
+                '风级':re_re[4]
+               }
+                
  
 
     def get_date(self):
