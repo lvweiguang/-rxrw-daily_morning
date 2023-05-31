@@ -28,7 +28,7 @@ class SendMessage():                                                 #定义发�
         self.access_token = self.get_access_token()                   #获取 access token
         self.opend_ids = self.get_openid()                            #获取关注用户的openid
  
-    def get_weather():
+    def get_weather(self):
         url = "http://www.weather.com.cn/weather/101250601.shtml"
         # 模拟浏览器的访问
         headers ={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:87.0) '
