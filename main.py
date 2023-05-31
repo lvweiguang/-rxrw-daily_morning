@@ -43,13 +43,15 @@ class SendMessage():                                                 #定义发�
             re_res = re.findall('<li.*?lv2.*?class="wea">(.*?)</p>.*?<span>(.*?)</span>.*?<i>(.*?)℃.*?<i>(.*?)</i>', raw_text)
             for re_re in re_res:
              print(re_re[1])
+             """
                mx={
                 '天气':re_re[1],
                 '最高温度':re_re[2],
                 '最低温度':re_re[3],
                 '风级':re_re[4]
                }
-        return mx     
+               """
+        return '今日天气：'+ re_re[1]     
              
  
 
