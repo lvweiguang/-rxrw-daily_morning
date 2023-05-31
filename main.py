@@ -28,7 +28,7 @@ class SendMessage():                                                 #定义发�
         self.access_token = self.get_access_token()                   #获取 access token
         self.opend_ids = self.get_openid()                            #获取关注用户的openid
  
-    def get_weather(self):
+    def get_weather():
         url = "http://www.weather.com.cn/weather/101250601.shtml"
         # 模拟浏览器的访问
         headers ={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:87.0) '
@@ -38,8 +38,8 @@ class SendMessage():                                                 #定义发�
        	#1.获取网页源代码
             raw_text = res.text
             re_res = re.findall('<li.*?lv2.*?class="wea">(.*?)</p>.*?<span>(.*?)</span>.*?<i>(.*?)℃.*?<i>(.*?)</i>', raw_text,re.S)
-          
-            
+            print(re_res)
+            """
             for re_re in re_res:
              print(re_re[1])  
              return ('今日天气：')  
@@ -51,7 +51,8 @@ class SendMessage():                                                 #定义发�
                 '风级':re_re[4]
                }
             """
-        return ('今日天气：')   
+        return ('今日天气：') 
+        """
              
  
 
