@@ -8,7 +8,7 @@ import requests
 class SendMessage():                                                 #定义发送消息的类
     def __init__(self):                                          
         date = self.get_date()                                       #获取当前日期
-  #      weather = self.get_weather()                                 #获取天气信息
+        weather = self.get_weather()                                 #获取天气信息
         lovedate = self.get_loveday()                                #获取纪念日
         herbirthday = self.get_herbirthday()                         #获取npy生日
         mybirthday = self.get_mybirthday()                           #获取自己生日
@@ -42,13 +42,15 @@ class SendMessage():                                                 #定义发�
             raw_text = res.text
             re_res = re.findall('<li.*?lv2.*?class="wea">(.*?)</p>.*?<span>(.*?)</span>.*?<i>(.*?)℃.*?<i>(.*?)</i>', raw_text)
             for re_re in re_res:
+             print(re_re[1])
                mx={
                 '天气':re_re[1],
                 '最高温度':re_re[2],
                 '最低温度':re_re[3],
                 '风级':re_re[4]
                }
-                
+        return mx     
+             
  
 
     def get_date(self):
