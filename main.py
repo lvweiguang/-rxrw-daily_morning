@@ -34,15 +34,14 @@ class SendMessage():                                                 #定义发�
         headers ={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:87.0) '
                          'Gecko/20100101 Firefox/87.0'}
         res = requests.get(url,headers=headers)
-
-        
-
         if res.status_code == 200:
        	#1.获取网页源代码
             raw_text = res.text
-            re_res = re.findall('<li.*?lv2.*?class="wea">(.*?)</p>.*?<span>(.*?)</span>.*?<i>(.*?)℃.*?<i>(.*?)</i>', raw_text)
+            re_res = re.findall('<li.*?lv2.*?class="wea">(.*?)</p>.*?<span>(.*?)</span>.*?<i>(.*?)℃.*?<i>(.*?)</i>', raw_text,re.S)
+          
+            
             for re_re in re_res:
-             print(re_re[1])
+             print(re_re[1])  
              """
                mx={
                 '天气':re_re[1],
@@ -50,8 +49,8 @@ class SendMessage():                                                 #定义发�
                 '最低温度':re_re[3],
                 '风级':re_re[4]
                }
-               """
-        return '今日天气：'+ re_re[1]     
+            """
+        return ('今日天气：')   
              
  
 
